@@ -1,5 +1,4 @@
-export const createSearchTemplate = () => {
-  return `
+export const createSearchTemplate = () => `
 <section class="main__search search container">
   <input
     type="text"
@@ -9,4 +8,3 @@ export const createSearchTemplate = () => {
   />
   <label class="visually-hidden" for="search__input">Search</label>
 </section>`;
-};

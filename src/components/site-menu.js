@@ -1,5 +1,4 @@
-export const createMenuTemplate = () => {
-  return `
+export const createMenuTemplate = () => `
 <section class="control__btn-wrap">
   <input
     type="radio"
@@ -26,4 +25,3 @@ export const createMenuTemplate = () => {
   <label for="control__statistic" class="control__label"
     >STATISTICS</label>
 </section>`;
-};

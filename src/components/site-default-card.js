@@ -1,5 +1,4 @@
-export const createDefaultCardTemplate = () => {
-  return `
+export const createDefaultCardTemplate = () => `
 <article class="card card--black">
   <div class="card__form">
     <div class="card__inner">
@@ -65,4 +64,3 @@ export const createDefaultCardTemplate = () => {
     </div>
   </div>
 </article>`;
-};
