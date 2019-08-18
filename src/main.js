@@ -1,5 +1,6 @@
 'use strict';
 
+import {getCardData} from '../src/components/site-data.js';
 import {createMenuTemplate} from '../src/components/site-menu.js';
 import {createBoardTemplate} from '../src/components/site-board.js';
 import {createSearchTemplate} from '../src/components/site-search.js';
@@ -18,6 +19,14 @@ const renderTemplate = (parent, template, place) => {
   parent.insertAdjacentHTML(place, template);
 };
 
+const renderTasks = (parent, count) => {
+  parent.insertAdjacentHTML(`beforeend`, new Array(count)
+    .fill(``)
+    .map(getCardData)
+    .map(createDefaultCardTemplate)
+    .join(``));
+};
+
 renderTemplate(mainControlElement, createMenuTemplate(), `beforeend`);
 
 const templatesIntoMain = [createSearchTemplate(), createFilterTemplate(), createBoardTemplate()];
@@ -30,6 +39,4 @@ const boardTasksElement = boardSectionElement.querySelector(`.board__tasks`);
 renderTemplate(boardTasksElement, createEditCardTemplate(), `beforeend`);
 renderTemplate(boardSectionElement, createSortingTemplate(), `afterbegin`);
 renderTemplate(boardSectionElement, createLoadMoreButtonTemplate(), `beforeend`);
-
-new Array(NUMBER_OF_TASKS_TO_RENDER).fill(``).forEach(() =>
-  renderTemplate(boardTasksElement, createDefaultCardTemplate(), `beforeend`));
+renderTasks(boardTasksElement, NUMBER_OF_TASKS_TO_RENDER);
