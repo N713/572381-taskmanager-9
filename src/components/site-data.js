@@ -1,19 +1,19 @@
-const NUMBER_OF_GOALS = 3;
+const NUMBER_OF_TASKS_TO_RENDER = 16;
 const NUMBER_OF_COLORS = 5;
+const NUMBER_OF_GOALS = 3;
 const NUMBER_OF_TAGS = 5;
-const NUMBER_OF_TASKS_TO_RENDER = 3;
 
 const getRandomBoolean = () => {
   return Boolean(Math.round(Math.random()));
 };
 
 const getFiltersValues = () => {
+  let repeatings = 0;
+  let favorites = 0;
+  let archives = 0;
   let overdues = 0;
   let todays = 0;
-  let favorites = 0;
-  let repeatings = 0;
   let tags = 0;
-  let archives = 0;
 
   for (const task of tasks) {
     if (task.dueDate < Date.now()) {

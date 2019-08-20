@@ -1,16 +1,18 @@
-export const createEditCardTemplate = () => `
+import {getCardData} from './site-data';
+
+export const createEditCardTemplate = ({description, dueDate, tags, isFavorite, isArchive} = getCardData()) => `
 <article class="card card--edit card--black">
   <form class="card__form" method="get">
     <div class="card__inner">
       <div class="card__control">
         <button type="button" class="card__btn card__btn--archive">
-          archive
+          ${isArchive}
         </button>
         <button
           type="button"
           class="card__btn card__btn--favorites card__btn--disabled"
         >
-          favorites
+          ${isFavorite}
         </button>
       </div>
 
@@ -26,7 +28,7 @@ export const createEditCardTemplate = () => `
             class="card__text"
             placeholder="Start typing your text here..."
             name="text"
-          >This is example of new task, you can add picture, set date and time, add tags.</textarea>
+          >${description}</textarea>
         </label>
       </div>
 
@@ -34,7 +36,7 @@ export const createEditCardTemplate = () => `
         <div class="card__details">
           <div class="card__dates">
             <button class="card__date-deadline-toggle" type="button">
-              date: <span class="card__date-status">no</span>
+              date: <span class="card__date-status">${new Date(dueDate).toDateString()}</span>
             </button>
 
             <fieldset class="card__date-deadline" disabled>
@@ -139,7 +141,7 @@ export const createEditCardTemplate = () => `
                 type="text"
                 class="card__hashtag-input"
                 name="hashtag-input"
-                placeholder="Type new hashtag here"
+                placeholder="${Array.from(tags).map((tag) => `#${tag}`).join(` `)}"
               />
             </label>
           </div>
