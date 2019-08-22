@@ -52,13 +52,13 @@ const getCardData = () => ({
   description: [`Изучить теорию`, `Сделать домашку`, `Пройти интенсив на соточку`][getRandomIntegerUnder(NUMBER_OF_GOALS)],
   dueDate: Date.now() + 1 + Math.floor(Math.random() * 7) * 24 * 60 * 60 * 1000,
   repeatingDays: {
-    'Mo': false,
+    'Mo': getRandomBoolean(),
     'Tu': getRandomBoolean(),
-    'We': false,
-    'Th': false,
-    'Fr': false,
-    'Sa': false,
-    'Su': false,
+    'We': getRandomBoolean(),
+    'Th': getRandomBoolean(),
+    'Fr': getRandomBoolean(),
+    'Sa': getRandomBoolean(),
+    'Su': getRandomBoolean(),
   },
   tags: new Set([`homework`, `theory`, `practice`, `intensive`, `keks`]
     .slice(getRandomIntegerUnder(NUMBER_OF_TAGS - 1)
